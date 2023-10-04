@@ -3,7 +3,7 @@ from pathlib import Path
 
 from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import PhenopacketUtil, phenopacket_reader
-
+from phenopackets import Phenopacket
 from pheval_gado.constants import INPUT_CASES_FILE_NAME
 
 
@@ -17,9 +17,8 @@ def create_case_id_from_phenopacket(phenopacket_path: Path) -> str:
     return phenopacket_path.stem
 
 
-def create_entry_for_phenopacket(phenopacket_path: Path) -> [str]:
+def create_entry_for_phenopacket(phenopacket_path: Path, phenopacket: Phenopacket) -> [str]:
     """Create an entry for a phenopacket, with the sample ID and all observed HPO ids."""
-    phenopacket = phenopacket_reader(phenopacket_path)
     case_id = create_case_id_from_phenopacket(phenopacket_path)
     phenotypic_features = get_list_of_phenotypic_features(PhenopacketUtil(phenopacket))
     phenotypic_features.insert(0, case_id)
@@ -30,7 +29,8 @@ def create_all_entries(phenopacket_dir: Path) -> [str]:
     """Create all entries for a corpus of phenopackets."""
     entries = []
     for phenopacket_path in all_files(Path(phenopacket_dir)):
-        entries.append(create_entry_for_phenopacket(phenopacket_path))
+        phenopacket = phenopacket_reader(phenopacket_path)
+        entries.append(create_entry_for_phenopacket(phenopacket_path, phenopacket))
     return entries
 
 
