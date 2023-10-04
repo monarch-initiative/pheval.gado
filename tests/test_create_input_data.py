@@ -4,7 +4,6 @@ from pathlib import Path
 from phenopackets import (
     Diagnosis,
     Disease,
-    Family,
     File,
     GeneDescriptor,
     GenomicInterpretation,
@@ -12,7 +11,6 @@ from phenopackets import (
     Interpretation,
     MetaData,
     OntologyClass,
-    Pedigree,
     Phenopacket,
     PhenotypicFeature,
     Resource,
@@ -23,8 +21,9 @@ from phenopackets import (
 from pheval.utils.phenopacket_utils import PhenopacketUtil
 
 from pheval_gado.prepare.create_input_data import (
-    get_list_of_phenotypic_features, create_case_id_from_phenopacket,
-    create_entry_for_phenopacket
+    create_case_id_from_phenopacket,
+    create_entry_for_phenopacket,
+    get_list_of_phenotypic_features,
 )
 
 interpretations = [
@@ -150,17 +149,30 @@ phenopacket = Phenopacket(
 
 class TestGetListOfPhenotypicFeatures(unittest.TestCase):
     def test_get_list_of_phenotypic_features(self):
-        self.assertEqual(get_list_of_phenotypic_features(PhenopacketUtil(phenopacket)),
-                         ['HP:0000256', 'HP:0002059', 'HP:0100309', 'HP:0003150', 'HP:0001332'])
+        self.assertEqual(
+            get_list_of_phenotypic_features(PhenopacketUtil(phenopacket)),
+            ["HP:0000256", "HP:0002059", "HP:0100309", "HP:0003150", "HP:0001332"],
+        )
 
 
 class TestCreateCaseIDFromPhenopacket(unittest.TestCase):
     def test_create_case_id_from_phenopacket(self):
-        self.assertEqual(create_case_id_from_phenopacket(Path("/path/to/Phenopacket-case-1.json")),
-                         "Phenopacket-case-1")
+        self.assertEqual(
+            create_case_id_from_phenopacket(Path("/path/to/Phenopacket-case-1.json")),
+            "Phenopacket-case-1",
+        )
 
 
 class TestCreateEntryForPhenopacket(unittest.TestCase):
     def test_create_entry_for_phenopacket(self):
-        self.assertEqual(create_entry_for_phenopacket(Path("/path/to/Phenopacket-case-1.json"), phenopacket),
-                         ['Phenopacket-case-1', 'HP:0000256', 'HP:0002059', 'HP:0100309', 'HP:0003150', 'HP:0001332'])
+        self.assertEqual(
+            create_entry_for_phenopacket(Path("/path/to/Phenopacket-case-1.json"), phenopacket),
+            [
+                "Phenopacket-case-1",
+                "HP:0000256",
+                "HP:0002059",
+                "HP:0100309",
+                "HP:0003150",
+                "HP:0001332",
+            ],
+        )

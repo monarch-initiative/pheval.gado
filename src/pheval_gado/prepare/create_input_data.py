@@ -1,9 +1,10 @@
 import csv
 from pathlib import Path
 
+from phenopackets import Phenopacket
 from pheval.utils.file_utils import all_files
 from pheval.utils.phenopacket_utils import PhenopacketUtil, phenopacket_reader
-from phenopackets import Phenopacket
+
 from pheval_gado.constants import INPUT_CASES_FILE_NAME
 
 
