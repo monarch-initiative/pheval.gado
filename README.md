@@ -6,7 +6,7 @@ This is the GADO plugin for PhEval. With this plugin, you can leverage the gene 
 Clone the pheval.gado repo and set up the poetry environment:
 
 ```sh
-git clone https://github.com/yaseminbridges/pheval.gado.git
+git clone https://github.com/monarch-initiative/pheval.gado.git
 
 cd pheval.gado
 
@@ -14,6 +14,11 @@ poetry shell
 
 poetry install
 
+```
+or install with PyPi:
+
+```sh
+pip install pheval.gado
 ```
 
 ## Configuring a *single* run
