@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pheval-gado"
-version = "0.1.2"
+version = "0.2.0"
 description = ""
 authors = ["Yasemin Bridges <y.bridges@qmul.ac.uk>"]
 readme = "README.md"
@@ -8,7 +8,7 @@ packages = [{include = "pheval_gado", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pheval = "^0.4.0"
+pheval = "^0.5.2"
 
 
 [tool.poetry.dev-dependencies]

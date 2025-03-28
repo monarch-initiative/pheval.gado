@@ -49,5 +49,7 @@ class GADOPhEvalRunner(PhEvalRunner):
         """post_process"""
         print("post processing")
         post_process_results_format(
-            raw_results_dir=self.raw_results_dir, output_dir=self.output_dir
+            raw_results_dir=self.raw_results_dir,
+            output_dir=self.output_dir,
+            phenopacket_dir=self.testdata_dir.joinpath("phenopackets"),
         )
