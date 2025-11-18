@@ -8,7 +8,7 @@ packages = [{include = "pheval_gado", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pheval = "^0.5.2"
+pheval = "^0.6.6"
 
 
 [tool.poetry.dev-dependencies]
