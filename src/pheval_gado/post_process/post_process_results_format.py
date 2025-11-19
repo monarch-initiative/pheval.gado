@@ -3,7 +3,6 @@ from pathlib import Path
 import polars as pl
 from pheval.post_processing.post_processing import SortOrder, generate_gene_result
 from pheval.utils.file_utils import all_files
-from polars.polars import ColumnNotFoundError
 
 
 def read_gado_result(gado_result: Path) -> pl.DataFrame:
@@ -41,5 +40,5 @@ def create_standardised_results(results_dir: Path, output_dir: Path, phenopacket
                 result_path=result,
                 phenopacket_dir=phenopacket_dir,
             )
-        except ColumnNotFoundError:
+        except pl.exceptions.ColumnNotFoundError:
             pass
